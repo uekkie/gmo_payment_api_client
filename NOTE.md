@@ -9,7 +9,7 @@ brew install openapi-generator
 
 # gem 作成
 ```shell
-openapi-generator generate -i ./gmo-pg-openapi-type-specification.json -g ruby -o ./lib/ --additional-properties=gemName=gmo_payment_api_client,gemRequiredRubyVersion='>= 3.2.0' --library=faraday
+openapi-generator generate -i ./gmo-pg-openapi-type-specification.json -g ruby -o ./ --additional-properties=gemName=gmo_payment_api_client,gemRequiredRubyVersion='>= 3.0.0' --library=faraday
 ```
 
 # gem のビルド
