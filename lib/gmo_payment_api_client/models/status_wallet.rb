@@ -27,10 +27,11 @@ module GmoPaymentApiClient
     PAYFAIL = "PAYFAIL".freeze
     EXPIRED = "EXPIRED".freeze
     REGISTER = "REGISTER".freeze
-    END = "END".freeze
+    # PATCH:ENDは予約語なので、_ENDに変更
+    _END = "END".freeze
 
     def self.all_vars
-      @all_vars ||= [UNPROCESSED, REQSUCCESS, AUTHPROCESS, AUTH, SALES, CAPTURE, CANCEL, RETURN, REQRETURN, PAYFAIL, EXPIRED, REGISTER, END].freeze
+      @all_vars ||= [UNPROCESSED, REQSUCCESS, AUTHPROCESS, AUTH, SALES, CAPTURE, CANCEL, RETURN, REQRETURN, PAYFAIL, EXPIRED, REGISTER, _END].freeze
     end
 
     # Builds the enum from string

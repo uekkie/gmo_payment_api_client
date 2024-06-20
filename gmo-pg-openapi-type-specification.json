@@ -3618,7 +3618,7 @@
             "type": "string",
             "description": "表示用の加盟店様名(英名)\n",
             "maxLength": 25,
-            "pattern": "^[a-zA-Z0-9 \\x2c-\\x2f]+$",
+            "pattern": "^[a-zA-Z0-9 ,-\/]+$",
             "example": "Sample Store"
           },
           "nameShort": {

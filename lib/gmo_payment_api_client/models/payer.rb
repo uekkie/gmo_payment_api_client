@@ -211,7 +211,10 @@ module GmoPaymentApiClient
         invalid_properties.push('invalid value for "name_alphabet", the character length must be smaller than or equal to 30.')
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      # PATCHED
+      # pattern = Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9 ,-\/]+$/)
+
       if !@name_alphabet.nil? && @name_alphabet !~ pattern
         invalid_properties.push("invalid value for \"name_alphabet\", must conform to the pattern #{pattern}.")
       end
@@ -252,7 +255,9 @@ module GmoPaymentApiClient
       return false if @name.to_s.length > 40
       return false if !@name_kana.nil? && @name_kana !~ Regexp.new(/^[ァ-ヶー　]+$/)
       return false if !@name_alphabet.nil? && @name_alphabet.to_s.length > 30
-      return false if !@name_alphabet.nil? && @name_alphabet !~ Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      
+      # return false if !@name_alphabet.nil? && @name_alphabet !~ Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      return false if !@name_alphabet.nil? && @name_alphabet !~ Regexp.new(/^[a-zA-Z0-9 ,-\/]+$/)
       gender_validator = EnumAttributeValidator.new('String', ["MALE", "FEMALE", "OTHER"])
       return false unless gender_validator.valid?(@gender)
       return false if !@email.nil? && @email.to_s.length > 254
@@ -306,7 +311,9 @@ module GmoPaymentApiClient
         fail ArgumentError, 'invalid value for "name_alphabet", the character length must be smaller than or equal to 30.'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      # pattern = Regexp.new(/^[a-zA-Z0-9 \\x2c-\\x2f]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9 ,-\/]+$/)
+      
       if name_alphabet !~ pattern
         fail ArgumentError, "invalid value for \"name_alphabet\", must conform to the pattern #{pattern}."
       end
