@@ -231,7 +231,7 @@ module GmoPaymentApiClient
         invalid_properties.push('invalid value for "account_id", the character length must be smaller than or equal to 60.')
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
       if !@account_id.nil? && @account_id !~ pattern
         invalid_properties.push("invalid value for \"account_id\", must conform to the pattern #{pattern}.")
       end
@@ -263,7 +263,7 @@ module GmoPaymentApiClient
       return false if !@email.nil? && @email.to_s.length > 254
       return false if !@delivery_email.nil? && @delivery_email.to_s.length > 254
       return false if !@account_id.nil? && @account_id.to_s.length > 60
-      return false if !@account_id.nil? && @account_id !~ Regexp.new(/^[a-zA-Z0-9-@_ . ]$/)
+      return false if !@account_id.nil? && @account_id !~ Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
       return false if !@ip.nil? && @ip.to_s.length > 39
       device_type_validator = EnumAttributeValidator.new('String', ["PC_WEB", "PC_APP", "MOBILE_WEB", "MOBILE_APP"])
       return false unless device_type_validator.valid?(@device_type)
@@ -370,7 +370,7 @@ module GmoPaymentApiClient
         fail ArgumentError, 'invalid value for "account_id", the character length must be smaller than or equal to 60.'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]${1,60}/)
       if account_id !~ pattern
         fail ArgumentError, "invalid value for \"account_id\", must conform to the pattern #{pattern}."
       end
