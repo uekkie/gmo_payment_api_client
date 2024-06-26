@@ -370,7 +370,7 @@ module GmoPaymentApiClient
         fail ArgumentError, 'invalid value for "account_id", the character length must be smaller than or equal to 60.'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]${1,60}/)
+      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
       if account_id !~ pattern
         fail ArgumentError, "invalid value for \"account_id\", must conform to the pattern #{pattern}."
       end
