@@ -247,7 +247,7 @@ module GmoPaymentApiClient
         invalid_properties.push('invalid value for "user_id", the character length must be smaller than or equal to 60.')
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9@_ . -]+$/)
       if @user_id !~ pattern
         invalid_properties.push("invalid value for \"user_id\", must conform to the pattern #{pattern}.")
       end
@@ -349,7 +349,7 @@ module GmoPaymentApiClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @user_id.nil?
       return false if @user_id.to_s.length > 60
-      return false if @user_id !~ Regexp.new(/^[a-zA-Z0-9-@_ . ]+$/)
+      return false if @user_id !~ Regexp.new(/^[a-zA-Z0-9@_ . -]+$/)
       identity_doc_type_validator = EnumAttributeValidator.new('String', ["PASSPORT", "TAXSTATEMENT"])
       return false unless identity_doc_type_validator.valid?(@identity_doc_type)
       return false if !@identity_doc_id.nil? && @identity_doc_id.to_s.length > 20
@@ -390,7 +390,7 @@ module GmoPaymentApiClient
         fail ArgumentError, 'invalid value for "user_id", the character length must be smaller than or equal to 60.'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9@_ . -]+$/)
       if user_id !~ pattern
         fail ArgumentError, "invalid value for \"user_id\", must conform to the pattern #{pattern}."
       end

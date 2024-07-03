@@ -120,7 +120,7 @@ module GmoPaymentApiClient
         invalid_properties.push("invalid value for \"card_number\", must conform to the pattern #{pattern}.")
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9- ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9 -]+$/)
       if !@cardholder_name.nil? && @cardholder_name !~ pattern
         invalid_properties.push("invalid value for \"cardholder_name\", must conform to the pattern #{pattern}.")
       end
@@ -157,7 +157,7 @@ module GmoPaymentApiClient
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @card_number.nil?
       return false if @card_number !~ Regexp.new(/^[0-9]{12,16}$/)
-      return false if !@cardholder_name.nil? && @cardholder_name !~ Regexp.new(/^[a-zA-Z0-9- ]+$/)
+      return false if !@cardholder_name.nil? && @cardholder_name !~ Regexp.new(/^[a-zA-Z0-9 -]+$/)
       return false if @expiry_month.nil?
       return false if @expiry_month !~ Regexp.new(/^[0-9]{2}$/)
       return false if @expiry_year.nil?
@@ -188,7 +188,7 @@ module GmoPaymentApiClient
         fail ArgumentError, 'cardholder_name cannot be nil'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9- ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9 -]+$/)
       if cardholder_name !~ pattern
         fail ArgumentError, "invalid value for \"cardholder_name\", must conform to the pattern #{pattern}."
       end

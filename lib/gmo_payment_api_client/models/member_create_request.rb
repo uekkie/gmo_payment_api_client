@@ -95,7 +95,7 @@ module GmoPaymentApiClient
         invalid_properties.push('invalid value for "member_id", member_id cannot be nil.')
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9@_ . -]{1,60}$/)
       if @member_id !~ pattern
         invalid_properties.push("invalid value for \"member_id\", must conform to the pattern #{pattern}.")
       end
@@ -112,7 +112,7 @@ module GmoPaymentApiClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @member_id.nil?
-      return false if @member_id !~ Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
+      return false if @member_id !~ Regexp.new(/^[a-zA-Z0-9@_ . -]{1,60}$/)
       return false if !@member_name.nil? && @member_name.to_s.length > 255
       true
     end
@@ -124,7 +124,7 @@ module GmoPaymentApiClient
         fail ArgumentError, 'member_id cannot be nil'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-@_ . ]{1,60}$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9@_ . -]{1,60}$/)
       if member_id !~ pattern
         fail ArgumentError, "invalid value for \"member_id\", must conform to the pattern #{pattern}."
       end

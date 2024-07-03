@@ -3391,7 +3391,7 @@
       },
       "MemberId": {
         "type": "string",
-        "pattern": "^[a-zA-Z0-9-@_ . ]{1,60}$",
+        "pattern": "^[a-zA-Z0-9@_ . -]{1,60}$",
         "description": "会員ID",
         "example": "member-001"
       },
@@ -4079,7 +4079,7 @@
             "type": "string",
             "description": "加盟店様サイト上における購入者のアカウントIDなど、一意に識別するためのID",
             "maxLength": 60,
-            "pattern": "^[a-zA-Z0-9-@_ . ]{1,60}$",
+            "pattern": "^[a-zA-Z0-9@_ . -]{1,60}$",
             "example": "account_123"
           },
           "ip": {
@@ -4269,7 +4269,7 @@
           },
           "cardholderName": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9- ]+$",
+            "pattern": "^[a-zA-Z0-9 -]+$",
             "description": "カード名義人",
             "example": "TARO MIHON"
           },
@@ -4698,7 +4698,7 @@
           "userId": {
             "type": "string",
             "maxLength": 60,
-            "pattern": "^[a-zA-Z0-9-@_ . ]{1,60}$",
+            "pattern": "^[a-zA-Z0-9@_ . -]{1,60}$",
             "description": "ユーザーID",
             "example": "userId-01"
           },
